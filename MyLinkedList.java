@@ -50,6 +50,13 @@ public class MyLinkedList<K>
         }
     }
     
+    public static MyLinkedList pop(MyLinkedList list)
+    {
+    	Node deleteNode=list.head;
+    	head=deleteNode.next;
+    	return list;
+    }
+    
     public static void main(String[] args)
     {
         /* Start with the empty list. */
@@ -61,6 +68,9 @@ public class MyLinkedList<K>
         list = insert(list,30);
    
         // Print the LinkedList
+        printList(list);
+        list.pop(list);
+        System.out.println("\nAfter deleting head node");
         printList(list);
     }
 }
