@@ -52,8 +52,13 @@ public class MyLinkedList<K>
     
     public static MyLinkedList pop(MyLinkedList list)
     {
-    	Node deleteNode=list.head;
-    	head=deleteNode.next;
+    	if(list.head!=null)
+    	{
+    		Node deleteNode=list.head;
+        	head=deleteNode.next;
+    	}
+    	else
+    		System.out.println("List empty");
     	return list;
     }
     
