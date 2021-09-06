@@ -20,16 +20,18 @@ public class MyLinkedList<K>
     public static MyLinkedList insert(MyLinkedList list, int data)
     {
         // Create a new node with given data
-        Node newNode = new Node(data);
+    	Node newNode = new Node(data);
+        newNode.next = null;
         // If the Linked List is empty,then make the new node as head
         if (list.head == null) 
         	list.head = newNode;
         else 
         {
-        	//Adding the new node at the beginning according to use case 2
-        	Node temp=head;
-        	newNode.next = head;
-            head=newNode;
+        	// Else traverse till the last node and insert the new_node there and Insert the newNode at last node
+            Node last = list.head;
+            while (last.next != null) 
+            	last = last.next;
+            last.next = newNode;
         }
         // Return the list by head
         return list;
@@ -56,9 +58,9 @@ public class MyLinkedList<K>
         MyLinkedList list = new MyLinkedList();
    
         // Insert the values
-        list = insert(list, 70);
-        list = insert(list, 30);
-        list = insert(list, 56);
+        list = insert(list,56);
+        list = insert(list,30);
+        list = insert(list,70);
    
         // Print the LinkedList
         printList(list);
