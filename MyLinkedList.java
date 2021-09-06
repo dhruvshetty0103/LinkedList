@@ -1,22 +1,22 @@
 package com.linkedlist.linekedlist;
+/* Linked list Node
+ * Constructor to create a new node
+ * Next is by default initialized as null
+*/
+class Node 
+{
+    int data;
+    Node next;
+    Node(int d) 
+    { 
+    	data = d;
+    }
+}
 public class MyLinkedList<K> 
 {
 	static Node head; // head of list
-	 
-    /* Linked list Node
-     * Constructor to create a new node
-     * Next is by default initialized as null
-    */
-    public static class Node 
-    {
-        int data;
-        Node next;
-        Node(int d) 
-        { 
-        	data = d;
-        }
-    }
-    // Method to insert a new node
+    
+	// Method to insert a new node
     public static MyLinkedList insert(MyLinkedList list, int data)
     {
         // Create a new node with given data
@@ -28,10 +28,8 @@ public class MyLinkedList<K>
         else 
         {
         	// Else traverse till the last node and insert the new_node there and Insert the newNode at last node
-            Node last = list.head;
-            while (last.next != null) 
-            	last = last.next;
-            last.next = newNode;
+           newNode.next=head.next;
+           head.next=newNode;
         }
         // Return the list by head
         return list;
@@ -59,8 +57,8 @@ public class MyLinkedList<K>
    
         // Insert the values
         list = insert(list,56);
-        list = insert(list,30);
         list = insert(list,70);
+        list = insert(list,30);
    
         // Print the LinkedList
         printList(list);
