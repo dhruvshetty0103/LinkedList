@@ -27,9 +27,9 @@ public class MyLinkedList<K>
         	list.head = newNode;
         else 
         {
-        	// Else traverse till the last node and insert the new_node there and Insert the newNode at last node
-           newNode.next=head.next;
-           head.next=newNode;
+        	// Insert the newNode between first and last nodes
+        	newNode.next=head.next;
+        	head.next=newNode;
         }
         // Return the list by head
         return list;
