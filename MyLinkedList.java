@@ -54,8 +54,15 @@ public class MyLinkedList<K>
     {
     	if(list.head!=null)
     	{
-    		Node deleteNode=list.head;
-        	head=deleteNode.next;
+    		Node last=list.head;
+    		Node previousNode=last;
+    		while(last.next!=null)
+    		{
+    			previousNode=last;
+    			last=last.next;
+    		}
+    		Node deleteNode=last;
+        	previousNode.next=null;
     	}
     	else
     		System.out.println("List empty");
