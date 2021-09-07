@@ -19,10 +19,11 @@ public class MyLinkedListTesting
 	@Before 
 	public void initialize()
 	{	   
+			list=new MyLinkedList();
 	        // Insert the values
-	        list = list.insert(list,56);
-	        list = list.insert(list,70);
-	        list = list.insert(list,30);
+	        list.insert(list,56);
+	        list.insert(list,70);
+	        list.insert(list,30);
 	}
 	
 	public MyLinkedListTesting(int data,int expectedResult) 
