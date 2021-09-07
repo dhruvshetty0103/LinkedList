@@ -1,41 +1,35 @@
 package com.linkedlist.linekedlist;
+/* Linked list Node
+ * Constructor to create a new node
+ * Next is by default initialized as null
+*/
+class Node 
+{
+    int data;
+    Node next;
+    Node(int d) 
+    { 
+    	data = d;
+    }
+}
 public class MyLinkedList<K> 
 {
 	static Node head; // head of list
-	 
-    /* Linked list Node*/
-    public static class Node 
-    {
-        int data;
-        Node next;
- 
-        // Constructor to create a new node
-        // Next is by default initialized
-        // as null
-        Node(int d) 
-        { 
-        	data = d;
-        }
-    }
-    // Method to insert a new node
+    
+	// Method to insert a new node
     public static MyLinkedList insert(MyLinkedList list, int data)
     {
         // Create a new node with given data
-        Node new_node = new Node(data);
-        new_node.next = null;
-   
-        // If the Linked List is empty,
-        // then make the new node as head
+    	Node newNode = new Node(data);
+        newNode.next = null;
+        // If the Linked List is empty,then make the new node as head
         if (list.head == null) 
-        	list.head = new_node;
+        	list.head = newNode;
         else 
         {
-        	// Else traverse till the last node and insert the new_node there
-            Node last = list.head;
-            while (last.next != null) 
-            	last = last.next;
-            // Insert the new_node at last node
-            last.next = new_node;
+        	// Insert the newNode between first and last nodes
+        	newNode.next=head.next;
+        	head.next=newNode;
         }
         // Return the list by head
         return list;
@@ -45,17 +39,27 @@ public class MyLinkedList<K>
     public static void printList(MyLinkedList list)
     {
         Node currNode = list.head;
-    
         System.out.print("LinkedList: ");
     
         // Traverse through the LinkedList
         while (currNode != null) 
         {
-            // Print the data at current node
+            // Print the data at current node and go to next node
             System.out.print(currNode.data + " ");
-            // Go to next node
             currNode = currNode.next;
         }
+    }
+    //When search is successfully done return 1 or else 0
+    public static int searchNode(int data)
+    {
+        Node currNode = head;
+        while (currNode != null) 
+        {
+            if(currNode.data==data)
+            	return 1;
+            currNode=currNode.next;
+        }
+        return 0;
     }
     
     public static void main(String[] args)
@@ -64,9 +68,9 @@ public class MyLinkedList<K>
         MyLinkedList list = new MyLinkedList();
    
         // Insert the values
-        list = insert(list, 56);
-        list = insert(list, 30);
-        list = insert(list, 70);
+        list = insert(list,56);
+        list = insert(list,70);
+        list = insert(list,30);
    
         // Print the LinkedList
         printList(list);
